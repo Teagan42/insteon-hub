@@ -22,7 +22,7 @@ class Insteon(object):
         self.houses = House.all(House, self.api)
         self.devices = Device.all(Device, self.api)
         #self.cameras = []
-        #self.scenes = []
+        self.scenes = Scene.all(Scene, self.api) 
         #self.rooms = []
         self.contacts = Contact.all(Contact, self.api)
         #self.alerts = []
