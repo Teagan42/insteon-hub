@@ -151,6 +151,10 @@ class InsteonResource(object):
                 print(str(key) + ": " + str(value))
 
     @property
+    def command_data(self):
+        return {}
+
+    @property
     def json(self):
         json_data = {}
         for attribute in self._properties:
@@ -161,10 +165,10 @@ class InsteonCommandable(InsteonResource):
     command_path = "commands"
 
     def send_command(self, command, payload=None, level=None, wait=False):
-        data = {
-            'device_id': getattr(self, "DeviceID"),
-            'command': command
-        }
+        data = self.command_data
+        
+        data['command'] = command
+        
         if payload:
             for key in payload:
                 data[key] = payload[key]
