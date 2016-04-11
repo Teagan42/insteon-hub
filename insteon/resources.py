@@ -54,6 +54,12 @@ class Device(InsteonCommandable):
     )
 
     @property
+    def command_data(self):
+        return {
+            'device_id': self.DeviceID
+        }
+
+    @property
     def DeviceCategory(self):
         import yaml
         import os
