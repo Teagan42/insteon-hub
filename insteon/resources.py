@@ -32,6 +32,53 @@ class Contact(InsteonResource):
         'ContactName', 'NotifyTo', 'ContactType', 'Prefered'
     )
 
+class Scene(InsteonCommandable):
+    resource_name='scenes'
+    _settables = (
+        'HouseID',
+        'SceneName',
+        'SceneID',
+        'StatusDevice',
+        'OnTime',
+        'OffTime',
+        'CustomOn',
+        'CustomOff',
+        'Group',
+        'Visible',
+        'Favorite',
+        'AutoStatus',
+        'DayMask',
+        'TimerEnabled',
+        'EnableCustomOn',
+        'EnableCustomOff',
+        'DeviceList',
+    )
+    _properties = (
+        'HouseID',
+         'SceneName',
+         'SceneID',
+         'StatusDevice',
+         'OnTime',
+         'OffTime',
+         'CustomOn',
+         'CustomOff',
+         'Group',
+         'Visible',
+         'Favorite',
+         'AutoStatus',
+         'DayMask',
+         'TimerEnabled',
+         'EnableCustomOn',
+         'EnableCustomOff',
+         'DeviceList',
+    )
+
+    @property
+    def command_data(self):
+        return {
+            'scene_id': self.SceneID
+        }
+
 class Device(InsteonCommandable):
     resource_name="devices"
     _settables = (
